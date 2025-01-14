@@ -23,11 +23,11 @@ const ProductSchema = new mongoose.Schema({
   harga: { type: Number, required: true },
   stok: { type: Number, required: true },
   image_url: { type: String, required: true },
-  // creator: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "User",
-  //   required: true,
-  // },
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Product", ProductSchema);

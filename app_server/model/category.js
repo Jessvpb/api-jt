@@ -10,11 +10,11 @@ const CategorySchema = new mongoose.Schema(
       maxlength: 2,
     },
     namaC: { type: String, required: true },
-    // creator: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: "User",
-    //   required: true,
-    // },
+    creator: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
   {
     timestamps: true,
