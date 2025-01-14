@@ -4,12 +4,11 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-var categoriesRouter = require("./routes/categories");
-var productsRouter = require("./routes/products");
-var brandsRouter = require("./routes/brands");
-
+var indexRouter = require("./app_server/routes/index");
+var usersRouter = require("./app_server/routes/users");
+var categoriesRouter = require("./app_server/routes/categories");
+var productsRouter = require("./app_server/routes/products");
+var brandsRouter = require("./app_server/routes/brands");
 const mongoose = require("mongoose");
 
 require("./app_server/model/db");
