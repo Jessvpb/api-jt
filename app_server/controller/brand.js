@@ -38,7 +38,7 @@ const readBrand = (req, res) => {
     .then((documents) => {
       res.status(200).json({
         message: "Get Data Brand",
-        categories: documents,
+        brands: documents,
       });
     })
     .catch((err) => {
