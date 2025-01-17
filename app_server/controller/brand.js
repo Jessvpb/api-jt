@@ -84,8 +84,6 @@ const deleteBrand = (req, res) => {
 // Fungsi untuk memperbarui brand
 const updateBrand = (req, res) => {
   const { kdBrand, namaB } = req.body;
-  const token = req.headers.authorization.split(" ")[1];
-  const user = jwt.verify(token, "kuncisi5bpaw");
 
   // Validasi panjang kdBrand
   if (kdBrand.length !== 2) {
@@ -100,8 +98,7 @@ const updateBrand = (req, res) => {
   // Update brand berdasarkan kdBrand
   Brand.updateOne(
     { kdBrand: brandId }, // Mencari brand berdasarkan kdBrand
-    { $set: { namaB: namaB } },
-    { creator: user.userid } // Data yang ingin diperbarui
+    { $set: { namaB: namaB } } // Data yang ingin diperbarui
   )
     .then((hasil) => {
       if (hasil.nModified === 0) {
