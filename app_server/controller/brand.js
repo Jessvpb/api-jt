@@ -27,7 +27,7 @@ const createBrand = (req, res) => {
     .catch((err) => {
       res.status(500).json({
         message: "Gagal menyimpan brand",
-        error: err.message,
+        //error: err.message,
       });
     });
 };
