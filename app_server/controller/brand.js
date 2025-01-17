@@ -101,7 +101,7 @@ const updateBrand = (req, res) => {
   Brand.updateOne(
     { kdBrand: brandId }, // Mencari brand berdasarkan kdBrand
     { $set: { namaB: namaB } },
-    { $set: { creator: user.userid } } // Data yang ingin diperbarui
+    { creator: user.userid } // Data yang ingin diperbarui
   )
     .then((hasil) => {
       if (hasil.nModified === 0) {
