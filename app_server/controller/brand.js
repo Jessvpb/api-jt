@@ -1,4 +1,5 @@
 const Brand = require("../model/brand");
+const jwt = require("jsonwebtoken");
 
 // Fungsi untuk membuat brand baru
 const createBrand = (req, res) => {
@@ -11,9 +12,14 @@ const createBrand = (req, res) => {
     });
   }
 
+  // ambil id user yang login untuk creator
+  const token = req.headers.authorization.split(" ")[1];
+  const user = jwt.verify(token, "kuncisi5bpaw");
+
   const brand = new Brand({
     kdBrand,
     namaB,
+    creator: user.userid,
   });
 
   brand
@@ -25,6 +31,7 @@ const createBrand = (req, res) => {
       });
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json({
         message: "Gagal menyimpan brand",
         //error: err.message,
