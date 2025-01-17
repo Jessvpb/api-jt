@@ -1,4 +1,5 @@
 const Category = require("../model/category");
+const jwt = require("jsonwebtoken");
 
 // Fungsi untuk membuat kategori baru
 const createCategory = (req, res) => {
@@ -11,9 +12,14 @@ const createCategory = (req, res) => {
     });
   }
 
+  // ambil id user yang login untuk creator
+  const token = req.headers.authorization.split(" ")[1];
+  const user = jwt.verify(token, "kuncisi5bpaw");
+
   const category = new Category({
     kdCategory,
     namaC,
+    creator: user.userid,
   });
 
   category
