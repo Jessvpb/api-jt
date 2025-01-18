@@ -31,6 +31,7 @@ const createCategory = (req, res) => {
       });
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json({
         message: "Gagal menyimpan kategori",
         //error: err.message,
