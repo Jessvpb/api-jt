@@ -37,7 +37,7 @@ const createProduct = (req, res) => {
         .catch((err) => {
           res.status(500).json({
             message: "Internal server error: Gagal menyimpan produk",
-            //error: err,
+            error: err.message,
           });
         });
     })
