@@ -2,19 +2,10 @@ const Product = require("../model/product"); // Pastikan path model sesuai
 
 // Create Product
 const createProduct = (req, res) => {
-  const { kdBrand, kdCategory, namaP, deskripsi, harga, stok, image_url } =
-    req.body;
+  const { kdBrand, kdCategory, namaP, deskripsi, harga, stok } = req.body;
 
   // Validasi input
-  if (
-    !kdBrand ||
-    !kdCategory ||
-    !namaP ||
-    !deskripsi ||
-    !harga ||
-    !stok ||
-    !image_url
-  ) {
+  if (!kdBrand || !kdCategory || !namaP || !deskripsi || !harga || !stok) {
     return res.status(400).json({ message: "Data tidak lengkap!" });
   }
 
@@ -32,7 +23,6 @@ const createProduct = (req, res) => {
         deskripsi,
         harga,
         stok,
-        image_url,
       });
 
       // Simpan produk ke database
@@ -103,7 +93,7 @@ const deleteProduct = (req, res) => {
 
 // Update Product
 const updateProduct = (req, res) => {
-  const { kdProduct, namaP, deskripsi, harga, stok, image_url } = req.body;
+  const { kdProduct, namaP, deskripsi, harga, stok } = req.body;
 
   // Validasi panjang kdCategory
   if (kdProduct.length !== 8) {
@@ -115,11 +105,11 @@ const updateProduct = (req, res) => {
   const productId = req.params.kdProduct;
 
   // Validasi jika tidak ada data yang diupdate
-  if (!namaP && !deskripsi && !harga && !stok && !image_url) {
+  if (!namaP && !deskripsi && !harga && !stok) {
     return res.status(400).json({ message: "Tidak ada data yang diupdate!" });
   }
 
-  const updateData = { namaP, deskripsi, harga, stok, image_url };
+  const updateData = { namaP, deskripsi, harga, stok };
 
   Product.updateOne({ kdProduct: productId }, { $set: updateData })
     .then((result) => {
