@@ -9,6 +9,10 @@ const createProduct = (req, res) => {
     return res.status(400).json({ message: "Data tidak lengkap!" });
   }
 
+  // ambil id user yang login untuk creator
+  const token = req.headers.authorization.split(" ")[1];
+  const user = jwt.verify(token, "kuncisi5bpaw");
+
   // Hitung jumlah produk berdasarkan kombinasi kdbrand dan kdcategory
   Product.countDocuments({ kdBrand, kdCategory })
     .then((count) => {
@@ -23,6 +27,7 @@ const createProduct = (req, res) => {
         deskripsi,
         harga,
         stok,
+        creator: user.userid,
       });
 
       // Simpan produk ke database
