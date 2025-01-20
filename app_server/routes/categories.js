@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const checkAuth = require("../middleware/check-auth");
+//const checkAuth = require("../middleware/check-auth");
 const CategoryController = require("../controller/category");
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
@@ -8,15 +8,27 @@ const CategoryController = require("../controller/category");
 // });
 
 //insert
-router.post("/", checkAuth, CategoryController.createCategory);
+router.post("/", CategoryController.createCategory);
 
 //select
-router.get("/", checkAuth, CategoryController.readCategory);
+router.get("/", CategoryController.readCategory);
 
 //delete
-router.delete("/:kdCategory", checkAuth, CategoryController.deleteCategory);
+router.delete("/:kdCategory", CategoryController.deleteCategory);
 
 //update
-router.put("/:kdCategory", checkAuth, CategoryController.updateCategory);
+router.put("/:kdCategory", CategoryController.updateCategory);
+
+// //insert
+// router.post("/", checkAuth, CategoryController.createCategory);
+
+// //select
+// router.get("/", checkAuth, CategoryController.readCategory);
+
+// //delete
+// router.delete("/:kdCategory", checkAuth, CategoryController.deleteCategory);
+
+// //update
+// router.put("/:kdCategory", checkAuth, CategoryController.updateCategory);
 
 module.exports = router;

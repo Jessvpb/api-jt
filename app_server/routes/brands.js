@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const checkAuth = require("../middleware/check-auth");
+//const checkAuth = require("../middleware/check-auth");
 const BrandController = require("../controller/brand");
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
@@ -8,15 +8,27 @@ const BrandController = require("../controller/brand");
 // });
 
 //insert
-router.post("/", checkAuth, BrandController.createBrand);
+router.post("/", BrandController.createBrand);
 
 //select
-router.get("/", checkAuth, BrandController.readBrand);
+router.get("/", BrandController.readBrand);
 
 //delete
-router.delete("/:kdBrand", checkAuth, BrandController.deleteBrand);
+router.delete("/:kdBrand", BrandController.deleteBrand);
 
 //update
-router.put("/:kdBrand", checkAuth, BrandController.updateBrand);
+router.put("/:kdBrand", BrandController.updateBrand);
+
+// //insert
+// router.post("/", checkAuth, BrandController.createBrand);
+
+// //select
+// router.get("/", checkAuth, BrandController.readBrand);
+
+// //delete
+// router.delete("/:kdBrand", checkAuth, BrandController.deleteBrand);
+
+// //update
+// router.put("/:kdBrand", checkAuth, BrandController.updateBrand);
 
 module.exports = router;
