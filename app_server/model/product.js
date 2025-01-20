@@ -22,7 +22,6 @@ const ProductSchema = new mongoose.Schema({
   deskripsi: { type: String, required: false },
   harga: { type: Number, required: true },
   stok: { type: Number, required: true },
-  image_url: { type: String, required: true },
   creator: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
