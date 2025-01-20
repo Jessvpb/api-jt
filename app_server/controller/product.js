@@ -1,4 +1,5 @@
-const Product = require("../model/product"); // Pastikan path model sesuai
+const Product = require("../model/product");
+const jwt = require("jsonwebtoken");
 
 // Create Product
 const createProduct = (req, res) => {
